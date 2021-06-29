@@ -106,8 +106,8 @@ app.get("/turnos/cliente",
     }
 )   
 
-// AQUIIIIIIIIIIIIIIIIIIII
-app.post("/turnos/cliente3",
+
+app.post("/turnos/cliente",
     function (request,response) 
     {
         // FECHA ACTUAL
