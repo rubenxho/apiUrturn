@@ -21,6 +21,8 @@ app.use(express.json());
 //Uso cors
 app.use(cors());
 
+let port = process.env.PORT || 300;
+
 //MYSQL Creo una conexion, con los datos de mi bd
 let connection = mysql.createConnection({
   host: "urturn.ctfgjcxfjdpu.us-east-2.rds.amazonaws.com",
@@ -1465,4 +1467,4 @@ app.post("/cliente-registro", (request, response) => {
   });
 });
 
-app.listen(3000);
+app.listen(port);
