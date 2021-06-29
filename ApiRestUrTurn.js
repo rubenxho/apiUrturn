@@ -85,8 +85,9 @@ app.get("/turnos/cliente",
     {
         // FECHA ACTUAL
         let hoy = new Date(Date.now());
-
+        hoy=new Date("2021-06-29T09:50:02.204Z")
         let cliente=request.query.id_usuario_cliente;
+        console.log({cliente:request.query.id_usuario_cliente})
         let params=[hoy,hoy,cliente,"Activo",hoy];
         let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ?  ORDER BY tiempo_espera ASC"
         connection.query(sql,params, 
@@ -97,7 +98,8 @@ app.get("/turnos/cliente",
                  }
                 else{
                  console.log(res)
-                 response.send(res)
+                //  response.send(res)
+                 response.send(hoy)
                 }
             }
         )
